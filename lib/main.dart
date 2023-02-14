@@ -36,8 +36,8 @@ class _MyHomePage extends StatelessWidget{
 
         child: Column(
           
-          children: <Widget>[
-           
+          children: const [
+           Card(child: Text('App 1 Test'),),
           ],
         ),
       ),
