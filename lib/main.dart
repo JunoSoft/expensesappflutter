@@ -12,36 +12,33 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-  
         primarySwatch: Colors.blue,
       ),
-      home:  _MyHomePage(),
+      home: _MyHomePage(),
     );
   }
 }
 
-class _MyHomePage extends StatelessWidget{
-
-
-
+class _MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
-
-        title:const  Text("Expenses App"),
+        title: const Text("Expenses App"),
       ),
       body: Center(
-
         child: Column(
-          
-          children: const [
-           Card(child: Text('App 1 Test'),),
+          children: <Widget>[
+            Container(
+              width: double.infinity,
+              child:const Card(
+                child: Text('App 1 Test'),
+                color: Colors.blue,
+              ),
+            ),
           ],
         ),
       ),
-    
     );
   }
 }
