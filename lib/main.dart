@@ -36,8 +36,7 @@ class _MyHomePage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
               width: double.infinity,
@@ -46,6 +45,28 @@ class _MyHomePage extends StatelessWidget {
                 color: Colors.blue,
               ),
             ),
+            Card(
+                elevation: 5,
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  width: double.infinity,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      const TextField(
+                        decoration: InputDecoration(labelText: 'Title'),
+                      ),
+                      const TextField(
+                        decoration: InputDecoration(labelText: 'Amount'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text("Add Transaction"),
+                        style: ElevatedButton.styleFrom(primary: Colors.purple),
+                      )
+                    ],
+                  ),
+                )),
             Column(
                 children: transaction.map((tx) {
               return Card(
@@ -75,7 +96,7 @@ class _MyHomePage extends StatelessWidget {
                                   color: Color.fromARGB(255, 124, 77, 1)),
                             )),
                         Text(
-                          DateFormat('yyyy,MM,dd').format(tx.date),
+                          DateFormat.yMMMMd().format(tx.date),
                           style:
                               const TextStyle(fontSize: 14, color: Colors.grey),
                         )
