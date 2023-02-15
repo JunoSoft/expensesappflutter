@@ -1,5 +1,6 @@
 import './transaction.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(const MyApp());
@@ -59,7 +60,7 @@ class _MyHomePage extends StatelessWidget {
                         color: Colors.purple,
                         width: 3,
                       )),
-                      child: Text(tx.amount.toString()),
+                      child: Text('\$ ${tx.amount}'),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,11 +71,11 @@ class _MyHomePage extends StatelessWidget {
                               tx.title,
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 25,
+                                  fontSize: 19,
                                   color: Color.fromARGB(255, 124, 77, 1)),
                             )),
                         Text(
-                          tx.date.toString(),
+                          DateFormat('yyyy,MM,dd').format(tx.date),
                           style:
                               const TextStyle(fontSize: 14, color: Colors.grey),
                         )
