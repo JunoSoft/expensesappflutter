@@ -1,7 +1,9 @@
-import './model/transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import './widget/transaction_list.dart';
+import './model/transaction.dart';
+import './widget/new_transaction.dart';
+import './widget/user_transactions.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,9 +25,6 @@ class MyApp extends StatelessWidget {
 }
 
 class _MyHomePage extends StatelessWidget {
-  
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,35 +42,7 @@ class _MyHomePage extends StatelessWidget {
                 color: Colors.blue,
               ),
             ),
-            Card(
-                elevation: 5,
-                child: Container(
-                  padding: const EdgeInsets.all(12),
-                  width: double.infinity,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: <Widget>[
-                      TextField(
-                        decoration: const InputDecoration(labelText: 'Title'),
-                        controller: titleController,
-                      ),
-                      TextField(
-                        decoration: const InputDecoration(labelText: 'Amount'),
-                        controller: amountController,
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          print(titleController.text +
-                              ':' +
-                              amountController.text);
-                        },
-                        style: ElevatedButton.styleFrom(primary: Colors.purple),
-                        child: Text("Add Transaction"),
-                      )
-                    ],
-                  ),
-                )),
-           TransactionList(),
+            UserTransactions(),
           ],
         ),
       ),
