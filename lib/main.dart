@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import './widget/transaction_list.dart';
-import './model/transaction.dart';
-import './widget/new_transaction.dart';
 import './widget/user_transactions.dart';
 
 void main() {
@@ -31,8 +27,7 @@ class _MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Expenses App"),
       ),
-      body: SingleChildScrollView(
-        child: Center(
+      body: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
@@ -47,7 +42,7 @@ class _MyHomePage extends StatelessWidget {
             ],
           ),
         ),
-      ),
+    
     );
   }
 }

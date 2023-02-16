@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../model/transaction.dart';
-import '../model/transaction.dart';
+
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactionlist;
-   TransactionList({required this.transactionlist,super.key});
+   const TransactionList({required this.transactionlist,super.key});
 
  
   @override
   Widget build(BuildContext context) {
-    return   Column(
-                children: transactionlist.map((tx) {
-              return Card(
+    return  Container(
+      height:300,
+      child:ListView.builder(
+      itemCount: transactionlist.length,
+          itemBuilder: (context, index) => Card(
                 child: Row(
                   children: <Widget>[
                     Container(
@@ -24,7 +26,7 @@ class TransactionList extends StatelessWidget {
                         color: Colors.purple,
                         width: 3,
                       )),
-                      child: Text('\$ ${tx.amount}'),
+                      child: Text('\$ ${transactionlist[index].amount}'),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,14 +34,14 @@ class TransactionList extends StatelessWidget {
                         Container(
                             padding: const EdgeInsets.symmetric(vertical: 10),
                             child: Text(
-                              tx.title,
+                              transactionlist[index].title,
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 19,
                                   color: Color.fromARGB(255, 124, 77, 1)),
                             )),
                         Text(
-                          DateFormat.yMMMMd().format(tx.date),
+                          DateFormat.yMMMMd().format(transactionlist[index].date),
                           style:
                               const TextStyle(fontSize: 14, color: Colors.grey),
                         )
@@ -47,7 +49,8 @@ class TransactionList extends StatelessWidget {
                     )
                   ],
                 ),
-              );
-            }).toList());
+              ))
+    ); 
+                
   }
 }
