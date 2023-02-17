@@ -1,11 +1,16 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
+class Chart extends StatelessWidget {
+  const Chart({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Card(
+      elevation: 6,
+      margin: EdgeInsets.all(10),
+      child: Row(),
+    );
   }
 }
