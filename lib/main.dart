@@ -14,9 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(primarySwatch: Colors.green),
       home: _MyHomePage(),
     );
   }
@@ -51,9 +49,9 @@ class _MyHomePageState extends State<_MyHomePage> {
         builder: (_) {
           return GestureDetector(
             behavior: HitTestBehavior.opaque,
-            onTap: (){},
+            onTap: () {},
             child: NewTransaction(addNewTransaction: _newTransaction),
-          ) ;
+          );
         });
   }
 
@@ -89,8 +87,9 @@ class _MyHomePageState extends State<_MyHomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
-          onPressed: () => _startAddNewTransaction(context),),
+        child: const Icon(Icons.add),
+        onPressed: () => _startAddNewTransaction(context),
+      ),
     );
   }
 }
