@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import './widget/new_transaction.dart';
 import './model/transaction.dart';
 import './widget/transaction_list.dart';
-import './widget/chart,.dart';
+import 'widget/chart.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,10 +32,10 @@ class _MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<_MyHomePage> {
   final List<Transaction> transactions = [
-    // Transaction(
-    //     amount: 68.99, date: DateTime.now(), id: 'X5667', title: 'New Shoes'),
-    // Transaction(
-    //     amount: 68.99, date: DateTime.now(), id: 'X5667', title: 'New Car'),
+    Transaction(
+        amount: 68.99, date: DateTime.now(), id: 'X5667', title: 'New Shoes'),
+    Transaction(
+        amount: 68.99, date: DateTime.now(), id: 'X5667', title: 'New Car'),
   ];
   List<Transaction> get _recentTransaction {
     return transactions.where((tx) {
