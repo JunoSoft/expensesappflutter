@@ -40,28 +40,31 @@ class _MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<_MyHomePage> {
-  final List<Transaction> transactions = [
-    Transaction(
-        amount: 68.99, date: DateTime.now(), id: 'X5667', title: 'New Shoes'),
-    Transaction(
-        amount: 68.99, date: DateTime.now(), id: 'X5667', title: 'New Car'),
+  final List<Transaction> _transactions = [
+    // Transaction(
+    //     amount: 68.99, date: DateTime.now(), id: 'X5667', title: 'New Shoes'),
+    // Transaction(
+    //     amount: 68.99, date: DateTime.now(), id: 'X5667', title: 'New Car'),
   ];
   List<Transaction> get _recentTransaction {
-    return transactions.where((tx) {
+    return _transactions.where((tx) {
       return tx.date.isAfter(DateTime.now().subtract(
         Duration(days: 7),
       ));
     }).toList();
   }
 
-  void _newTransaction({required double txAmount, required String txTitle}) {
+  void _newTransaction(
+      {required double txAmount,
+      required String txTitle,
+      required DateTime txDate}) {
     final tx = Transaction(
         amount: txAmount,
-        date: DateTime.now(),
+        date: txDate,
         id: DateTime.now().toString(),
         title: txTitle);
     setState(() {
-      transactions.add(tx);
+      _transactions.add(tx);
     });
   }
 
@@ -76,7 +79,11 @@ class _MyHomePageState extends State<_MyHomePage> {
           );
         });
   }
-
+void _deleteTransaction(String id){
+  setState(() {
+  _transactions.removeWhere((tx) => tx.id ==id);
+  });
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,7 +104,7 @@ class _MyHomePageState extends State<_MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Chart(recentTransactions: _recentTransaction),
-            TransactionList(transactionlist: transactions),
+            TransactionList(transactionlist: _transactions,removeTransaction:_deleteTransaction),
           ],
         ),
       ),
