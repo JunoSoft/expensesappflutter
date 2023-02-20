@@ -16,10 +16,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-          primarySwatch: Colors.green,
-          accentColor: Colors.amber,
-          appBarTheme:
-              AppBarTheme(textTheme: ThemeData.light().textTheme.copyWith())),
+        primarySwatch: Colors.green,
+        accentColor: Colors.amber,
+        appBarTheme:
+            AppBarTheme(textTheme: ThemeData.light().textTheme.copyWith()),
+        // textTheme: ThemeData.light().textTheme.copyWith(
+        //   titleSmall: const TextStyle(
+        //     fontFamily: 'OpenSans',
+        //     fontSize: 18,
+        //     fontWeight: FontWeight.bold
+        //   ),
+        //   button: const TextStyle(color: Colors.white)
+        // )
+      ),
       home: _MyHomePage(),
     );
   }
