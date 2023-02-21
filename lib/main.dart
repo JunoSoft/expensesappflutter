@@ -79,32 +79,47 @@ class _MyHomePageState extends State<_MyHomePage> {
           );
         });
   }
-void _deleteTransaction(String id){
-  setState(() {
-  _transactions.removeWhere((tx) => tx.id ==id);
-  });
-}
+
+  void _deleteTransaction(String id) {
+    setState(() {
+      _transactions.removeWhere((tx) => tx.id == id);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final appBar = AppBar(
+      title: const Text("Expenses App"),
+      actions: <Widget>[
+        IconButton(
+            onPressed: () => _startAddNewTransaction(context),
+            icon: const Icon(
+              Icons.add,
+              color: Colors.black,
+              size: 30,
+            ))
+      ],
+    );
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Expenses App"),
-        actions: <Widget>[
-          IconButton(
-              onPressed: () => _startAddNewTransaction(context),
-              icon: const Icon(
-                Icons.add,
-                color: Colors.black,
-                size: 30,
-              ))
-        ],
-      ),
+      appBar: appBar,
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Chart(recentTransactions: _recentTransaction),
-            TransactionList(transactionlist: _transactions,removeTransaction:_deleteTransaction),
+            Container(
+                height: (MediaQuery.of(context).size.height -
+                        appBar.preferredSize.height -
+                        MediaQuery.of(context).padding.top) *
+                    0.4,
+                child: Chart(recentTransactions: _recentTransaction)),
+            Container(
+                height: (MediaQuery.of(context).size.height -
+                        appBar.preferredSize.height -
+                        MediaQuery.of(context).padding.top) *
+                    0.6,
+                child: TransactionList(
+                    transactionlist: _transactions,
+                    removeTransaction: _deleteTransaction)),
           ],
         ),
       ),
