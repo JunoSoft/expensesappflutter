@@ -6,9 +6,9 @@ import './widget/transaction_list.dart';
 import 'widget/chart.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
+  // WidgetsFlutterBinding.ensureInitialized();
+  // SystemChrome.setPreferredOrientations(
+  //     [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
   runApp(const MyApp());
 }
 
@@ -50,6 +50,7 @@ class _MyHomePageState extends State<_MyHomePage> {
     // Transaction(
     //     amount: 68.99, date: DateTime.now(), id: 'X5667', title: 'New Car'),
   ];
+  bool _showChart = false;
   List<Transaction> get _recentTransaction {
     return _transactions.where((tx) {
       return tx.date.isAfter(DateTime.now().subtract(
@@ -110,20 +111,34 @@ class _MyHomePageState extends State<_MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-                height: (MediaQuery.of(context).size.height -
-                        appBar.preferredSize.height -
-                        MediaQuery.of(context).padding.top) *
-                    0.3,
-                child: Chart(recentTransactions: _recentTransaction)),
-            Container(
-                height: (MediaQuery.of(context).size.height -
-                        appBar.preferredSize.height -
-                        MediaQuery.of(context).padding.top) *
-                    0.7,
-                child: TransactionList(
-                    transactionlist: _transactions,
-                    removeTransaction: _deleteTransaction)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text('Show Chart'),
+                Switch(
+                    value: _showChart,
+                    onChanged: (val) {
+                      setState(() {
+                        _showChart = val;
+                      });
+                    })
+              ],
+            ),
+            _showChart
+                ? Container(
+                    height: (MediaQuery.of(context).size.height -
+                            appBar.preferredSize.height -
+                            MediaQuery.of(context).padding.top) *
+                        0.3,
+                    child: Chart(recentTransactions: _recentTransaction))
+                : Container(
+                    height: (MediaQuery.of(context).size.height -
+                            appBar.preferredSize.height -
+                            MediaQuery.of(context).padding.top) *
+                        0.7,
+                    child: TransactionList(
+                        transactionlist: _transactions,
+                        removeTransaction: _deleteTransaction)),
           ],
         ),
       ),
