@@ -15,15 +15,16 @@ class _NewTransactionState extends State<NewTransaction> {
   DateTime? _selectedDate;
 
   void _submitData() {
-    if(_amountController.text.isEmpty){
-      return ;
+    if (_amountController.text.isEmpty) {
+      return;
     }
     final enteredTitle = _titleController.text;
     final enteredAmount = double.parse(_amountController.text);
-    if (enteredTitle.isEmpty || enteredAmount <= 0 || _selectedDate==null) {
+    if (enteredTitle.isEmpty || enteredAmount <= 0 || _selectedDate == null) {
       return;
     }
-    widget.addNewTransaction(txTitle: enteredTitle, txAmount: enteredAmount,txDate:_selectedDate);
+    widget.addNewTransaction(
+        txTitle: enteredTitle, txAmount: enteredAmount, txDate: _selectedDate);
     Navigator.of(context).pop();
   }
 
@@ -48,7 +49,11 @@ class _NewTransactionState extends State<NewTransaction> {
     return Card(
         elevation: 5,
         child: Container(
-          padding: const EdgeInsets.all(12),
+          padding: EdgeInsets.only(
+              left: 10,
+              right: 10,
+              top: 10,
+              bottom: MediaQuery.of(context).viewInsets.bottom + 10),
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
